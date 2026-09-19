@@ -14,7 +14,7 @@ services:
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: sistema-inventario-db
-          property: connectionURI
+          property: connectionString
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: sistema-inventario-db
