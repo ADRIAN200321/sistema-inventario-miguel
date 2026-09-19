@@ -1,13 +1,13 @@
 -- Datos iniciales para PostgreSQL (Render.com)
--- Spring Boot carga este archivo automáticamente cuando platform=postgresql
+-- Solo incluye columnas que existen en la entidad Producto
 
-INSERT INTO productos (id, nombre, descripcion, cantidad, precio, categoria, codigo, marca)
+INSERT INTO productos (id, nombre, cantidad, precio, categoria, codigo)
 VALUES
-(1, 'Mouse inalámbrico', 'Mouse óptico inalámbrico', 20, 65000, 'Tecnologia', 'P001', NULL),
-(4, 'Audífonos', NULL, 12, 80000, 'Tecnología', 'P002', NULL),
-(5, 'pantalla', NULL, 20, 26900, 'Tecnología', 'P003', NULL),
-(6, 'llaves', NULL, 0, 20000, 'Accesorios', 'P004', NULL),
-(7, 'papel', NULL, 100, 45000, 'Papelería', 'P005', NULL)
+(1, 'Mouse inalámbrico', 20, 65000, 'Tecnologia', 'P001'),
+(4, 'Audífonos', 12, 80000, 'Tecnología', 'P002'),
+(5, 'pantalla', 20, 26900, 'Tecnología', 'P003'),
+(6, 'llaves', 0, 20000, 'Accesorios', 'P004'),
+(7, 'papel', 100, 45000, 'Papelería', 'P005')
 ON CONFLICT (id) DO NOTHING;
 
 -- Ajustar secuencia para que los próximos IDs continúen correctamente
