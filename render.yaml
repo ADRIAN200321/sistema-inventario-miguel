@@ -1,0 +1,35 @@
+databases:
+  - name: sistema-inventario-db
+    plan: free
+    databaseName: sistema_inventario
+    user: sistema_user
+
+services:
+  - type: web
+    name: sistema-inventario
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: sistema-inventario-db
+          property: connectionURI
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: sistema-inventario-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: sistema-inventario-db
+          property: password
+      - key: DATABASE_DRIVER
+        value: org.postgresql.Driver
+      - key: DDL_AUTO
+        value: update
+      - key: SQL_INIT_MODE
+        value: always
+      - key: SQL_INIT_PLATFORM
+        value: postgresql
+      - key: PORT
+        value: "8080"
